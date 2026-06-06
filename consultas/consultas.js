@@ -4,6 +4,13 @@ const btnCancelar = document.getElementById("btnCancelar");
 const form = document.getElementById("consultaForm");
 const lista = document.getElementById("listaConsultas");
 const pesquisa = document.getElementById("pesquisa");
+const paciente = document.getElementById("paciente");
+const medico = document.getElementById("medico");
+const data = document.getElementById("data");
+const horario = document.getElementById("horario");
+const status = document.getElementById("status");
+const observacoes = document.getElementById("observacoes");
+const editIndex = document.getElementById("editIndex");
 
 const selectPaciente = document.getElementById("paciente");
 const selectMedico = document.getElementById("medico");

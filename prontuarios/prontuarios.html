@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prontuários</title>
+    <link rel="stylesheet" href="prontuarios.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>Clínica+</h2>
+
+        <nav>
+            <ul>
+                <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+                <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+                <li><a href="../medicos/medicos.html">Médicos</a></li>
+                <li><a href="../consultas/consultas.html">Consultas</a></li>
+                <li class="active"><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="content">
+
+        <h1>Prontuários</h1>
+
+        <div class="top">
+
+            <select id="pacienteSelect"></select>
+
+            <button id="btnNovo">Novo registro</button>
+
+        </div>
+
+        <div class="historico">
+
+            <h2>Histórico do paciente</h2>
+
+            <div id="lista"></div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal hidden" id="modal">
+
+    <div class="modal-box">
+
+        <h2>Novo Prontuário</h2>
+
+        <form id="form">
+
+            <input type="hidden" id="editIndex">
+
+            <label>Médico</label>
+            <select id="medico"></select>
+
+            <label>Diagnóstico</label>
+            <input type="text" id="diagnostico" required>
+
+            <label>Observações</label>
+            <textarea id="observacoes"></textarea>
+
+            <button type="submit">Salvar</button>
+            <button type="button" id="cancelar">Cancelar</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="prontuarios.js"></script>
+
+</body>
+
+</html>
