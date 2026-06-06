@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hojeLista = [];
     const futuras = [];
 
-    // 🔥 PRIMEIRO separa tudo
+    //  separa tudo
     consultas.forEach(c => {
 
         const dataConsulta = new Date(`${c.data}T${c.horario}`);
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 🔥 DEPOIS atualiza os cards
+    //  atualiza os cards
     document.getElementById("atrasadas").textContent = atrasadas.length;
     document.getElementById("hoje").textContent = hojeLista.length;
     document.getElementById("futuras").textContent = futuras.length;
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("totalMedicos").textContent = medicos.length;
     document.getElementById("totalConsultas").textContent = consultas.length;
 
-    // 🔥 TABELA
+    //  TABELA
    const tabela = document.getElementById("consultas");
 tabela.innerHTML = "";
 
