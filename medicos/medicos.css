@@ -4,9 +4,15 @@
     box-sizing:border-box;
 }
 
+:root{
+    --red:#d52b1e;
+    --dark-red:#b2221a;
+    --bg:#f4f6f9;
+}
+
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
+    background:var(--bg);
 }
 
 .layout{
@@ -14,38 +20,40 @@ body{
     min-height:100vh;
 }
 
+/* SIDEBAR */
 .sidebar{
     width:240px;
-    background:#1e293b;
+    background:#d52b1e;
     color:white;
     padding:30px 20px;
 }
 
-.sidebar h2{
-    margin-bottom:40px;
-}
-
 .sidebar ul{
     list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:6px; /* 🔥 ISSO garante espaçamento igual em tudo */
 }
 
 .sidebar li{
-    margin-bottom:8px;
-    padding:15px;
     border-radius:8px;
 }
 
-.sidebar li:hover,
-.sidebar .active{
-    background:#334155;
-}
-
 .sidebar a{
+    display:block;
+    padding:12px 15px;
+    border-radius:8px;
     color:white;
     text-decoration:none;
-    display:block;
+    transition:0.2s;
 }
 
+.sidebar a:hover,
+.sidebar .active a{
+    background:#b2221a;
+}
+
+/* CONTEÚDO */
 .container{
     flex:1;
     padding:30px;
@@ -63,21 +71,29 @@ body{
     gap:10px;
 }
 
+/* INPUT */
 input{
     padding:10px;
     border:1px solid #ccc;
     border-radius:8px;
 }
 
+/* BOTÃO */
 button{
     padding:10px 16px;
     border:none;
     border-radius:8px;
     cursor:pointer;
-    background:#2563eb;
+    background:var(--red);
     color:white;
+    transition:0.2s;
 }
 
+button:hover{
+    background:var(--dark-red);
+}
+
+/* TABELA */
 .table-container{
     background:white;
     border-radius:12px;
@@ -92,21 +108,21 @@ table{
 
 th{
     padding:15px;
-}
-
-td{
-    padding:15px 15px 15px 50px;
-}
-
-th{
     background:#f8fafc;
+    color:var(--dark-red);
+    text-align:left;
 }
 
+/* 🔥 AJUSTE IMPORTANTE (corrigindo seu padding estranho) */
+td{
+    padding:15px;   /* antes estava 50px à esquerda */
+}
+
+/* MODAL */
 .modal{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.4);
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -121,6 +137,7 @@ th{
     background:white;
     padding:25px;
     border-radius:12px;
+    border-top:5px solid var(--red);
 }
 
 .modal-content form{
@@ -137,4 +154,8 @@ th{
 
 .cancel{
     background:#dc2626;
+}
+
+.cancel:hover{
+    background:#b91c1c;
 }

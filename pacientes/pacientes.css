@@ -4,9 +4,15 @@
     box-sizing:border-box;
 }
 
+:root{
+    --red:#d52b1e;
+    --dark-red:#b2221a;
+    --bg:#f4f6f9;
+}
+
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
+    background:var(--bg);
 }
 
 /* faz sidebar + conteúdo ficarem lado a lado */
@@ -15,44 +21,40 @@ body{
     min-height:100vh;
 }
 
-.sidebar {
-    width: 240px;
-    min-height: 100vh;
-    background: #1e293b;
-    color: white;
-    padding: 30px 20px;
-    flex-shrink: 0;
+/* SIDEBAR */
+.sidebar{
+    width:240px;
+    background:#d52b1e;
+    color:white;
+    padding:30px 20px;
 }
 
-.sidebar h2 {
-    margin-bottom: 40px;
+.sidebar ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:6px; /* 🔥 ISSO garante espaçamento igual em tudo */
 }
 
-.sidebar ul {
-    list-style: none;
+.sidebar li{
+    border-radius:8px;
 }
 
-.sidebar li {
-    margin-bottom: 8px;
+.sidebar a{
+    display:block;
+    padding:12px 15px;
+    border-radius:8px;
+    color:white;
+    text-decoration:none;
+    transition:0.2s;
 }
 
-.sidebar a {
-    display: block;
-    padding: 15px;
-    border-radius: 8px;
-    color: white;
-    text-decoration: none;
-    transition: 0.2s;
+.sidebar a:hover,
+.sidebar .active a{
+    background:#b2221a;
 }
 
-.sidebar a:hover {
-    background: #334155;
-}
-
-.sidebar .active a {
-    background: #334155;
-}
-
+/* CONTEÚDO */
 .container{
     flex:1;
     padding:30px;
@@ -81,12 +83,13 @@ button{
     border:none;
     border-radius:8px;
     cursor:pointer;
-    background:#2563eb;
+    background:var(--red);
     color:white;
+    transition:0.2s;
 }
 
 button:hover{
-    opacity:.9;
+    background:var(--dark-red);
 }
 
 .table-container{
@@ -109,8 +112,10 @@ th,td{
 th{
     background:#f8fafc;
     text-align:left;
+    color:var(--dark-red);
 }
 
+/* MODAL */
 .modal{
     position:fixed;
     inset:0;
@@ -129,6 +134,7 @@ th{
     width:400px;
     padding:25px;
     border-radius:12px;
+    border-top:5px solid var(--red);
 }
 
 .modal-content h2{
@@ -149,4 +155,8 @@ th{
 
 .cancel{
     background:#dc2626;
+}
+
+.cancel:hover{
+    background:#b91c1c;
 }

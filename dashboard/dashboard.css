@@ -4,9 +4,15 @@
     box-sizing: border-box;
 }
 
+:root{
+    --red: #d52b1e;
+    --dark-red: #b2221a;
+    --bg: #f4f6f9;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f9;
+    background: var(--bg);
 }
 
 .container {
@@ -14,43 +20,40 @@ body {
     min-height: 100vh;
 }
 
-.sidebar {
-    width: 240px;
-    background: #1e293b;
-    color: white;
-    padding: 30px 20px;
+/* SIDEBAR */
+.sidebar{
+    width:240px;
+    background:#d52b1e;
+    color:white;
+    padding:30px 20px;
 }
 
-.sidebar h2 {
-    margin-bottom: 40px;
+.sidebar ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:6px; /* 🔥 ISSO garante espaçamento igual em tudo */
 }
 
-.sidebar ul {
-    list-style: none;
+.sidebar li{
+    border-radius:8px;
 }
 
-.sidebar a {
-    color: white;
-    text-decoration: none;
-    display: block;
+.sidebar a{
+    display:block;
+    padding:12px 15px;
+    border-radius:8px;
+    color:white;
+    text-decoration:none;
+    transition:0.2s;
 }
 
-.sidebar li {
-    list-style: none;
-    padding: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 8px;
+.sidebar a:hover,
+.sidebar .active a{
+    background:#b2221a;
 }
 
-.sidebar li:hover {
-    background: #334155;
-}
-
-.sidebar li.active {
-    background: #334155;
-}
-
+/* CONTEÚDO */
 .content {
     flex: 1;
     padding: 30px;
@@ -60,7 +63,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin-bottom: 30px;
 }
 
@@ -68,11 +70,11 @@ body {
     color: #1e293b;
 }
 
+/* CARDS */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-
     margin-bottom: 30px;
 }
 
@@ -80,8 +82,8 @@ body {
     background: white;
     padding: 25px;
     border-radius: 12px;
-
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-left: 6px solid var(--red);
 }
 
 .card h3 {
@@ -92,14 +94,14 @@ body {
 .card p {
     font-size: 32px;
     font-weight: bold;
-    color: #2563eb;
+    color: var(--red);
 }
 
+/* TABELA */
 .appointments {
     background: white;
     padding: 25px;
     border-radius: 12px;
-
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
@@ -120,5 +122,5 @@ td {
 }
 
 th {
-    color: #475569;
+    color: var(--dark-red);
 }

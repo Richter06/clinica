@@ -4,9 +4,15 @@
     box-sizing:border-box;
 }
 
+:root{
+    --red:#d52b1e;
+    --dark-red:#b2221a;
+    --bg:#f4f6f9;
+}
+
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
+    background:var(--bg);
 }
 
 .layout{
@@ -14,38 +20,40 @@ body{
     min-height:100vh;
 }
 
+/* SIDEBAR */
 .sidebar{
     width:240px;
-    background:#1e293b;
+    background:#d52b1e;
     color:white;
     padding:30px 20px;
 }
 
-.sidebar h2{
-    margin-bottom:40px;
-}
-
 .sidebar ul{
     list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:6px; /* 🔥 ISSO garante espaçamento igual em tudo */
 }
 
 .sidebar li{
-    padding:15px;
     border-radius:8px;
-    margin-bottom:8px;
-}
-
-.sidebar li:hover,
-.sidebar .active{
-    background:#334155;
 }
 
 .sidebar a{
+    display:block;
+    padding:12px 15px;
+    border-radius:8px;
     color:white;
     text-decoration:none;
-    display:block;
+    transition:0.2s;
 }
 
+.sidebar a:hover,
+.sidebar .active a{
+    background:#b2221a;
+}
+
+/* CONTEÚDO */
 .container{
     flex:1;
     padding:30px;
@@ -63,6 +71,7 @@ body{
     gap:10px;
 }
 
+/* INPUTS */
 input,
 select,
 textarea{
@@ -77,19 +86,22 @@ textarea{
     min-height:100px;
 }
 
+/* BOTÕES */
 button{
     padding:10px 16px;
     border:none;
     border-radius:8px;
     cursor:pointer;
-    background:#2563eb;
+    background:var(--red);
     color:white;
+    transition:0.2s;
 }
 
 button:hover{
-    opacity:.9;
+    background:var(--dark-red);
 }
 
+/* TABELA */
 .table-container{
     background:white;
     border-radius:12px;
@@ -111,8 +123,10 @@ td{
 
 th{
     background:#f8fafc;
+    color:var(--dark-red);
 }
 
+/* MODAL */
 .modal{
     position:fixed;
     inset:0;
@@ -131,6 +145,7 @@ th{
     background:white;
     padding:25px;
     border-radius:12px;
+    border-top:5px solid var(--red);
 }
 
 .modal-content h2{
@@ -151,4 +166,8 @@ th{
 
 .cancel{
     background:#dc2626;
+}
+
+.cancel:hover{
+    background:#b91c1c;
 }

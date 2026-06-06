@@ -4,9 +4,15 @@
     box-sizing: border-box;
 }
 
+:root{
+    --red:#d52b1e;
+    --dark-red:#b2221a;
+    --bg:#f4f7fa;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f7fa;
+    background: var(--bg);
     min-height: 100vh;
 
     display: flex;
@@ -28,6 +34,8 @@ body {
     border-radius: 12px;
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    border-top: 5px solid var(--red);
 }
 
 .logo-area {
@@ -36,7 +44,7 @@ body {
 }
 
 .logo-area h1 {
-    color: #2563eb;
+    color: var(--red);
     margin-bottom: 8px;
 }
 
@@ -67,16 +75,18 @@ body {
     border: 1px solid #dcdcdc;
     border-radius: 8px;
     font-size: 16px;
+    transition: 0.2s;
 }
 
 .input-group input:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: var(--red);
 }
 
+/* BOTÃO */
 button {
     border: none;
-    background: #2563eb;
+    background: var(--red);
     color: white;
 
     padding: 14px;
@@ -90,5 +100,5 @@ button {
 }
 
 button:hover {
-    background: #1d4ed8;
+    background: var(--dark-red);
 }

@@ -59,13 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }]
         },
         options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
+    responsive: true,
+    plugins: {
+        legend: {
+            display: false
         }
+    },
+    scales: {
+        y: {
+            ticks: {
+                stepSize: 1,   // 🔥 força pular de 1 em 1
+                precision: 0   // 🔥 remove decimais
+            },
+            beginAtZero: true
+        }
+    }
+}
     });
 
 });

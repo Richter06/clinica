@@ -5,8 +5,14 @@
     font-family:Arial;
 }
 
+:root{
+    --red:#d52b1e;
+    --dark-red:#b2221a;
+    --bg:#f4f6f9;
+}
+
 body{
-    background:#f4f6f9;
+    background:var(--bg);
 }
 
 .layout{
@@ -14,44 +20,53 @@ body{
     min-height:100vh;
 }
 
+/* SIDEBAR */
 .sidebar{
     width:240px;
-    background:#1e293b;
+    background:#d52b1e;
     color:white;
-    padding:30px;
+    padding:30px 20px;
 }
 
 .sidebar ul{
     list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:6px; /* 🔥 ISSO garante espaçamento igual em tudo */
 }
 
 .sidebar li{
-    padding:12px;
     border-radius:8px;
-    margin-bottom:6px;
-}
-
-.sidebar li:hover,
-.sidebar .active{
-    background:#334155;
 }
 
 .sidebar a{
+    display:block;
+    padding:12px 15px;
+    border-radius:8px;
     color:white;
     text-decoration:none;
+    transition:0.2s;
 }
 
+.sidebar a:hover,
+.sidebar .active a{
+    background:#b2221a;
+}
+
+/* CONTEÚDO */
 .content{
     flex:1;
     padding:30px;
 }
 
+/* TOPO */
 .top{
     display:flex;
     gap:10px;
     margin:20px 0;
 }
 
+/* INPUTS */
 select, input, textarea{
     padding:10px;
     border-radius:8px;
@@ -59,19 +74,27 @@ select, input, textarea{
     width:100%;
 }
 
+/* BOTÃO */
 button{
     padding:10px 14px;
     border:none;
     border-radius:8px;
-    background:#2563eb;
+    background:var(--red);
     color:white;
     cursor:pointer;
+    transition:0.2s;
 }
 
+button:hover{
+    background:var(--dark-red);
+}
+
+/* HISTÓRICO */
 .historico{
     background:white;
     padding:20px;
     border-radius:10px;
+    border-left:5px solid var(--red);
 }
 
 .item{
@@ -79,6 +102,7 @@ button{
     padding:10px 0;
 }
 
+/* MODAL */
 .modal{
     position:fixed;
     inset:0;
@@ -97,4 +121,5 @@ button{
     padding:20px;
     width:400px;
     border-radius:10px;
+    border-top:5px solid var(--red);
 }
