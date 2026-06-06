@@ -68,8 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
     scales: {
         y: {
             ticks: {
-                stepSize: 1,   // 🔥 força pular de 1 em 1
-                precision: 0   // 🔥 remove decimais
+                stepSize: 1,   //  força pular de 1 em 1
+                precision: 0   //  remove decimais
             },
             beginAtZero: true
         }

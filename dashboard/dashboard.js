@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const tabela = document.getElementById("consultas");
 tabela.innerHTML = "";
 
-// pega todas as consultas e ordena corretamente
+// ordena por data/hora
 const proximas = consultas
     .slice()
     .sort((a, b) =>
@@ -56,12 +56,25 @@ const proximas = consultas
 // renderiza
 proximas.forEach(c => {
 
-        tabela.innerHTML += `
-            <tr>
-                <td>${c.horario}</td>
-                <td>${c.paciente}</td>
-                <td>${c.medico}</td>
-            </tr>
-        `;
-    });
+    const agora = new Date();
+    const dataConsulta = new Date(`${c.data}T${c.horario}`);
+
+    let status = "";
+
+    if (dataConsulta < agora) {
+        status = "🔴 Atrasada";
+    } else {
+        status = "🟢 Agendada";
+    }
+
+    tabela.innerHTML += `
+        <tr>
+            <td>${c.data}</td>
+            <td>${c.horario}</td>
+            <td>${c.paciente}</td>
+            <td>${c.medico}</td>
+            <td>${status}</td>
+        </tr>
+    `;
+});
 });
