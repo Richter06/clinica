@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Clínica Saúde+</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+    <h2>Clínica+</h2>
+
+    <nav>
+        <ul>
+            <li class="active"><a href="../dashboard/dashboard.html">Dashboard</a></li>
+            <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+            <li><a href="../medicos/medicos.html">Médicos</a></li>
+            <li><a href="../consultas/consultas.html">Consultas</a></li>
+            <li><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
+            <li><a href="../relatorios/relatorios.html">Relatórios</a></li>
+        </ul>
+    </nav>
+</aside>
+
+        <main class="content">
+
+            <header class="header">
+                <h1>Dashboard</h1>
+                <span>Bem-vindo, Administrador</span>
+            </header>
+
+            <section class="cards">
+
+                <div class="card">
+                    <h3>Pacientes</h3>
+                    <p>256</p>
+                </div>
+
+                <div class="card">
+                    <h3>Médicos</h3>
+                    <p>12</p>
+                </div>
+
+                <div class="card">
+                    <h3>Consultas Hoje</h3>
+                    <p>18</p>
+                </div>
+
+                <div class="card">
+                    <h3>Atrasos</h3>
+                    <p>3</p>
+                </div>
+
+            </section>
+
+            <section class="appointments">
+
+                <h2>Próximas Consultas</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Paciente</th>
+                            <th>Médico</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="consultas">
+                    </tbody>
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

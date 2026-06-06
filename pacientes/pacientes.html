@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="pacientes.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+            <h2>Clínica+</h2>
+
+            <nav>
+                <ul>
+                    <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+                    <li class="active"><a href="../pacientes/pacientes.html">Pacientes</a></li>
+                    <li><a href="../medicos/medicos.html">Médicos</a></li>
+                    <li><a href="../consultas/consultas.html">Consultas</a></li>
+                    <li><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
+                    <li><a href="../relatorios/relatorios.html">Relatórios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="container">
+
+            <div class="header">
+                <h1>Pacientes</h1>
+
+                <div class="actions">
+                    <input type="text" id="search" placeholder="Pesquisar paciente...">
+
+                    <button id="btnNovo">Novo Paciente</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Telefone</th>
+                            <th>Convênio</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaPacientes"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal hidden" id="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Novo Paciente</h2>
+
+            <form id="pacienteForm">
+                <input type="hidden" id="editIndex">
+
+                <label>Nome</label>
+                <input type="text" id="nome" required>
+
+                <label>CPF</label>
+                <input type="text" id="cpf" required>
+
+                <label>Telefone</label>
+                <input type="text" id="telefone" required>
+
+                <label>Convênio</label>
+                <input type="text" id="convenio">
+
+                <div class="buttons">
+                    <button type="submit">Salvar</button>
+
+                    <button type="button" class="cancel" id="btnCancelar">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="pacientes.js"></script>
+</body>
+</html>
