@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <link rel="stylesheet" href="relatorios.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>Clínica+</h2>
+
+        <nav>
+            <ul>
+                <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+                <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+                <li><a href="../medicos/medicos.html">Médicos</a></li>
+                <li><a href="../consultas/consultas.html">Consultas</a></li>
+                <li><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
+                <li class="active"><a href="../relatorios/relatorios.html">Relatórios</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="content">
+
+        <h1>Relatórios da Clínica</h1>
+
+       <section class="chart-box">
+
+    <h2>Visão Geral da Clínica</h2>
+
+    <canvas id="grafico"></canvas>
+
+</section>
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>Pacientes</h3>
+                <p id="pacientes">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Médicos</h3>
+                <p id="medicos">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Consultas</h3>
+                <p id="consultas">0</p>
+            </div>
+
+            <div class="card danger">
+                <h3>Atrasadas</h3>
+                <p id="atrasadas">0</p>
+            </div>
+
+        </section>
+
+        <section class="table-box">
+
+            <h2>Resumo por Médico</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Médico</th>
+                        <th>Total de Consultas</th>
+                    </tr>
+                </thead>
+
+                <tbody id="medicosTabela"></tbody>
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="relatorios.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
