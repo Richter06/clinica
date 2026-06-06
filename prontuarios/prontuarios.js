@@ -20,9 +20,9 @@ JSON.parse(localStorage.getItem("pacientes")) || [];
 const medicos =
 JSON.parse(localStorage.getItem("medicos")) || [];
 
-let pacienteAtual = "";
-
-// preencher selects
+// -------------------------
+// CARREGAR PACIENTES
+// -------------------------
 function carregarPacientes(){
 
     pacienteSelect.innerHTML = "";
@@ -34,11 +34,11 @@ function carregarPacientes(){
             </option>
         `;
     });
-
-    pacienteAtual = pacienteSelect.value;
 }
 
-// médicos
+// -------------------------
+// CARREGAR MÉDICOS
+// -------------------------
 function carregarMedicos(){
 
     medicoSelect.innerHTML = "";
@@ -52,7 +52,9 @@ function carregarMedicos(){
     });
 }
 
-// render histórico
+// -------------------------
+// RENDER PRONTUÁRIOS
+// -------------------------
 function render(){
 
     lista.innerHTML = "";
@@ -61,30 +63,40 @@ function render(){
         p.paciente === pacienteSelect.value
     );
 
-    filtro.forEach(p => {
+    filtro.forEach((p, index) => {
 
         lista.innerHTML += `
             <div class="item">
                 <strong>${p.data}</strong> - ${p.medico}
                 <p>${p.diagnostico}</p>
                 <small>${p.observacoes || ""}</small>
+
+                <button onclick="excluirProntuario(${index})">
+                    Excluir
+                </button>
             </div>
         `;
     });
 }
 
-// abrir modal
+// -------------------------
+// ABRIR MODAL
+// -------------------------
 btnNovo.onclick = () => {
     modal.classList.remove("hidden");
     carregarMedicos();
 };
 
-// fechar modal
+// -------------------------
+// FECHAR MODAL
+// -------------------------
 cancelar.onclick = () => {
     modal.classList.add("hidden");
 };
 
-// salvar
+// -------------------------
+// SALVAR PRONTUÁRIO
+// -------------------------
 form.onsubmit = (e) => {
 
     e.preventDefault();
@@ -109,12 +121,41 @@ form.onsubmit = (e) => {
     render();
 };
 
-// troca paciente
+// -------------------------
+// TROCA PACIENTE
+// -------------------------
 pacienteSelect.onchange = () => {
     render();
 };
 
-// init
+// -------------------------
+// EXCLUIR PRONTUÁRIO
+// -------------------------
+function excluirProntuario(index) {
+
+    if (!confirm("Deseja excluir este registro do prontuário?")) return;
+
+    const pacienteFiltrado = prontuarios.filter(p =>
+        p.paciente === pacienteSelect.value
+    );
+
+    const item = pacienteFiltrado[index];
+
+    const realIndex = prontuarios.indexOf(item);
+
+    prontuarios.splice(realIndex, 1);
+
+    localStorage.setItem(
+        "prontuarios",
+        JSON.stringify(prontuarios)
+    );
+
+    render();
+}
+
+// -------------------------
+// INIT
+// -------------------------
 carregarPacientes();
 carregarMedicos();
 render();
