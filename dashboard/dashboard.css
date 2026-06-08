@@ -230,3 +230,170 @@ tbody tr:hover{
     background: var(--red);
     border-radius: 999px;
 }
+
+/* RESPONSIVO */
+/* RESPONSIVO */
+
+@media (max-width: 1024px) {
+    .content{
+        padding: 28px;
+    }
+
+    .header h1{
+        font-size: 30px;
+    }
+
+    .cards{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .card p{
+        font-size: 32px;
+    }
+}
+
+@media (max-width:768px){
+
+    h1 {margin-left: 45px;}
+
+    span {margin-left: 45px;}
+
+    .sidebar{
+        position:fixed;
+        top:0;
+        left:-260px;
+
+        width:260px;
+        height:100vh;
+
+        z-index:1000;
+
+        transition:.3s;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .menu-toggle{
+        display:block;
+        position:fixed;
+        top:15px;
+        left:15px;
+        z-index:1100;
+    }
+
+    .content{
+        width:100%;
+        padding:70px 20px 20px;
+    }
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .appointments{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:640px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar{
+        padding: 18px 14px;
+    }
+
+    .sidebar h2{
+        font-size: 22px;
+    }
+
+    .sidebar li{
+        flex: 1 1 100%;
+    }
+
+    .sidebar a{
+        padding: 11px 12px;
+        font-size: 14px;
+    }
+
+    .content{
+        padding: 16px;
+    }
+
+    .header h1{
+        font-size: 24px;
+    }
+
+    .header span{
+        font-size: 14px;
+    }
+
+    .card{
+        padding: 18px;
+    }
+
+    .card h3{
+        font-size: 14px;
+    }
+
+    .card p{
+        font-size: 30px;
+    }
+
+    .appointments{
+        padding: 16px;
+    }
+
+    .appointments h2{
+        font-size: 20px;
+    }
+
+    table{
+        min-width: 560px;
+    }
+
+    th,
+    td{
+        padding: 12px;
+        font-size: 14px;
+    }
+    .menu-toggle{
+    display:block;
+    position:fixed;
+    top:18px;
+    left:18px;
+
+    background:none;
+    border:none;
+
+    color:#1e293b;
+
+    font-size:34px;
+    line-height:1;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    transition:.2s;
+}
+
+.menu-toggle:hover{
+    transform:scale(1.1);
+}
+
+.sidebar.open ~ .content .menu-toggle{
+    left:200px;
+}
+}
+
+

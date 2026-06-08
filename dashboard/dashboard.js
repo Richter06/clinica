@@ -78,3 +78,16 @@ proximas.forEach(c => {
     `;
 });
 });
+
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+
+menuToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+
+    if(sidebar.classList.contains("open")){
+        menuToggle.innerHTML = "✕";
+    }else{
+        menuToggle.innerHTML = "☰";
+    }
+});
