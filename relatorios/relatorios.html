@@ -10,82 +10,81 @@
 
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-    <aside class="sidebar">
-        <h2>Clínica Vita+</h2>
+        <aside class="sidebar">
+            <h2>Clínica Vita+</h2>
 
-        <nav>
-            <ul>
-                <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
-                <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
-                <li><a href="../medicos/medicos.html">Médicos</a></li>
-                <li><a href="../consultas/consultas.html">Consultas</a></li>
-                <li><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
-                <li class="active"><a href="../relatorios/relatorios.html">Relatórios</a></li>
-            </ul>
-        </nav>
-    </aside>
+            <nav>
+                <ul>
+                    <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+                    <li><a href="../medicos/medicos.html">Médicos</a></li>
+                    <li><a href="../consultas/consultas.html">Consultas</a></li>
+                    <li><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
+                    <li class="active"><a href="../relatorios/relatorios.html">Relatórios</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-    <main class="content">
+        <main class="content">
 
-        <h1>Relatórios da Clínica</h1>
+            <h1>Relatórios da Clínica</h1>
 
-       <section class="chart-box">
+            <section class="chart-box">
+                <h2>Visão Geral da Clínica</h2>
+                <canvas id="grafico"></canvas>
+            </section>
 
-    <h2>Visão Geral da Clínica</h2>
+            <section class="cards">
 
-    <canvas id="grafico"></canvas>
+                <div class="card">
+                    <h3>Pacientes</h3>
+                    <p id="pacientes">0</p>
+                </div>
 
-</section>
+                <div class="card">
+                    <h3>Médicos</h3>
+                    <p id="medicos">0</p>
+                </div>
 
-        <section class="cards">
+                <div class="card">
+                    <h3>Consultas</h3>
+                    <p id="consultas">0</p>
+                </div>
 
-            <div class="card">
-                <h3>Pacientes</h3>
-                <p id="pacientes">0</p>
-            </div>
+                <div class="card danger">
+                    <h3>Atrasadas</h3>
+                    <p id="atrasadas">0</p>
+                </div>
 
-            <div class="card">
-                <h3>Médicos</h3>
-                <p id="medicos">0</p>
-            </div>
+            </section>
 
-            <div class="card">
-                <h3>Consultas</h3>
-                <p id="consultas">0</p>
-            </div>
+            <section class="table-box">
 
-            <div class="card danger">
-                <h3>Atrasadas</h3>
-                <p id="atrasadas">0</p>
-            </div>
+                <h2>Resumo por Médico</h2>
 
-        </section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Médico</th>
+                            <th>Especialidade</th>
+                            <th>Total de Consultas</th>
+                        </tr>
+                    </thead>
 
-        <section class="table-box">
+                    <tbody id="medicosTabela"></tbody>
+                </table>
 
-            <h2>Resumo por Médico</h2>
+            </section>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Médico</th>
-                        <th>Total de Consultas</th>
-                    </tr>
-                </thead>
+        </main>
 
-                <tbody id="medicosTabela"></tbody>
-            </table>
+    </div>
 
-        </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="relatorios.js"></script>
 
-    </main>
-
-</div>
-
-<script src="relatorios.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

@@ -7,96 +7,165 @@
 :root{
     --red:#d52b1e;
     --dark-red:#b2221a;
-    --bg:#f4f6f9;
+    --light-red:#fff1f0;
+    --bg:#f7f8fa;
+    --white:#ffffff;
+    --text:#1f2937;
+    --gray:#64748b;
+    --border:#e5e7eb;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:"Segoe UI", Arial, sans-serif;
     background:var(--bg);
+    color:var(--text);
 }
 
-/* faz sidebar + conteúdo ficarem lado a lado */
+/* LAYOUT */
+
 .layout{
     display:flex;
     min-height:100vh;
 }
 
 /* SIDEBAR */
+
 .sidebar{
-    width:240px;
-    background:#d52b1e;
+    width:260px;
+    background:linear-gradient(
+        180deg,
+        var(--red),
+        var(--dark-red)
+    );
+
     color:white;
     padding:30px 20px;
+
+    box-shadow:4px 0 20px rgba(0,0,0,.08);
+}
+
+.sidebar h2{
+    margin-bottom:40px;
+    font-size:28px;
+    font-weight:700;
 }
 
 .sidebar ul{
     list-style:none;
     display:flex;
     flex-direction:column;
-    gap:6px; /* 🔥 ISSO garante espaçamento igual em tudo */
+    gap:8px;
 }
 
 .sidebar li{
-    border-radius:8px;
+    border-radius:12px;
 }
 
 .sidebar a{
     display:block;
-    padding:12px 15px;
-    border-radius:8px;
+    padding:14px 16px;
+
     color:white;
     text-decoration:none;
-    transition:0.2s;
+
+    border-radius:12px;
+
+    transition:.25s;
 }
 
-.sidebar a:hover,
+.sidebar a:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateX(4px);
+}
+
 .sidebar .active a{
-    background:#b2221a;
+    background:rgba(255,255,255,.22);
 }
 
 /* CONTEÚDO */
+
 .container{
     flex:1;
-    padding:30px;
+    padding:40px;
 }
 
 .header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:20px;
+
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:32px;
 }
 
 .actions{
     display:flex;
-    gap:10px;
+    gap:12px;
 }
 
-input{
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:8px;
+/* INPUTS */
+
+input,
+select,
+textarea{
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    font-size:15px;
+
+    transition:.2s;
 }
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:var(--red);
+
+    box-shadow:0 0 0 3px rgba(213,43,30,.15);
+}
+
+/* BOTÕES */
 
 button{
-    padding:10px 16px;
+    padding:12px 18px;
+
     border:none;
-    border-radius:8px;
+    border-radius:10px;
+
     cursor:pointer;
+
     background:var(--red);
     color:white;
-    transition:0.2s;
+
+    font-weight:600;
+
+    transition:.25s;
 }
 
 button:hover{
     background:var(--dark-red);
+    transform:translateY(-2px);
 }
+
+/* TABELA */
 
 .table-container{
     background:white;
-    border-radius:12px;
+
+    border-radius:18px;
+
     overflow:hidden;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.05);
 }
 
 table{
@@ -104,22 +173,45 @@ table{
     border-collapse:collapse;
 }
 
-th,td{
-    padding:15px;
-    border-bottom:1px solid #eee;
+th{
+    background:#fafafa;
+
+    color:var(--dark-red);
+
+    font-size:14px;
+    font-weight:600;
+
+    text-align:left;
+
+    padding:16px;
+
+    border-bottom:2px solid var(--border);
 }
 
-th{
-    background:#f8fafc;
-    text-align:left;
-    color:var(--dark-red);
+td{
+    padding:16px;
+
+    border-bottom:1px solid var(--border);
+}
+
+tbody tr{
+    transition:.2s;
+}
+
+tbody tr:hover{
+    background:var(--light-red);
 }
 
 /* MODAL */
+
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.4);
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(3px);
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -130,33 +222,54 @@ th{
 }
 
 .modal-content{
+    width:450px;
+
     background:white;
-    width:400px;
-    padding:25px;
-    border-radius:12px;
-    border-top:5px solid var(--red);
+
+    padding:28px;
+
+    border-radius:18px;
+
+    border-top:6px solid var(--red);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.15);
 }
 
 .modal-content h2{
     margin-bottom:20px;
+    color:var(--text);
 }
 
 .modal-content form{
     display:flex;
     flex-direction:column;
-    gap:12px;
+    gap:14px;
 }
 
 .buttons{
     display:flex;
+    justify-content:flex-end;
     gap:10px;
+
     margin-top:10px;
 }
 
 .cancel{
-    background:#dc2626;
+    background:#ef4444;
 }
 
 .cancel:hover{
-    background:#b91c1c;
+    background:#dc2626;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--red);
+    border-radius:999px;
 }

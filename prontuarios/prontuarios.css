@@ -2,17 +2,23 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial;
 }
 
 :root{
     --red:#d52b1e;
     --dark-red:#b2221a;
-    --bg:#f4f6f9;
+    --light-red:#fff1f0;
+    --bg:#f7f8fa;
+    --white:#ffffff;
+    --text:#1f2937;
+    --gray:#64748b;
+    --border:#e5e7eb;
 }
 
 body{
+    font-family:"Segoe UI", Arial, sans-serif;
     background:var(--bg);
+    color:var(--text);
 }
 
 .layout{
@@ -21,92 +27,203 @@ body{
 }
 
 /* SIDEBAR */
+
 .sidebar{
-    width:240px;
-    background:#d52b1e;
+    width:260px;
+
+    background:linear-gradient(
+        180deg,
+        var(--red),
+        var(--dark-red)
+    );
+
     color:white;
     padding:30px 20px;
+
+    box-shadow:4px 0 20px rgba(0,0,0,.08);
+}
+
+.sidebar h2{
+    margin-bottom:40px;
+    font-size:28px;
+    font-weight:700;
 }
 
 .sidebar ul{
     list-style:none;
     display:flex;
     flex-direction:column;
-    gap:6px; /* 🔥 ISSO garante espaçamento igual em tudo */
+    gap:8px;
 }
 
 .sidebar li{
-    border-radius:8px;
+    border-radius:12px;
 }
 
 .sidebar a{
     display:block;
-    padding:12px 15px;
-    border-radius:8px;
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
     color:white;
     text-decoration:none;
-    transition:0.2s;
+
+    transition:.25s;
 }
 
-.sidebar a:hover,
+.sidebar a:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateX(4px);
+}
+
 .sidebar .active a{
-    background:#b2221a;
+    background:rgba(255,255,255,.22);
 }
 
 /* CONTEÚDO */
+
 .content{
     flex:1;
-    padding:30px;
+    padding:40px;
+}
+
+.content h1{
+    margin-bottom:25px;
+    font-size:32px;
 }
 
 /* TOPO */
+
 .top{
     display:flex;
-    gap:10px;
-    margin:20px 0;
+    gap:12px;
+    margin-bottom:25px;
+    align-items:center;
 }
 
 /* INPUTS */
-select, input, textarea{
-    padding:10px;
-    border-radius:8px;
-    border:1px solid #ccc;
+
+select,
+input,
+textarea{
     width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    font-size:15px;
+
+    transition:.2s;
 }
 
-/* BOTÃO */
+select:focus,
+input:focus,
+textarea:focus{
+    outline:none;
+
+    border-color:var(--red);
+
+    box-shadow:0 0 0 3px rgba(213,43,30,.15);
+}
+
+textarea{
+    resize:none;
+    min-height:120px;
+}
+
+/* BOTÕES */
+
 button{
-    padding:10px 14px;
+    padding:12px 18px;
+
     border:none;
-    border-radius:8px;
+    border-radius:10px;
+
     background:var(--red);
     color:white;
+
+    font-weight:600;
+
     cursor:pointer;
-    transition:0.2s;
+
+    transition:.25s;
 }
 
 button:hover{
     background:var(--dark-red);
+    transform:translateY(-2px);
 }
 
 /* HISTÓRICO */
+
 .historico{
     background:white;
-    padding:20px;
-    border-radius:10px;
-    border-left:5px solid var(--red);
+
+    padding:25px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.05);
 }
 
+.historico h2{
+    margin-bottom:20px;
+}
+
+/* ITEM DO PRONTUÁRIO */
+
 .item{
-    border-bottom:1px solid #eee;
-    padding:10px 0;
+    padding:18px;
+
+    margin-bottom:15px;
+
+    background:#fafafa;
+
+    border-left:5px solid var(--red);
+    border-radius:12px;
+
+    transition:.2s;
+}
+
+.item:hover{
+    background:var(--light-red);
+}
+
+.item strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:var(--dark-red);
+    font-size:15px;
+}
+
+.item p{
+    margin-bottom:8px;
+    line-height:1.5;
+}
+
+.item small{
+    color:var(--gray);
 }
 
 /* MODAL */
+
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.5);
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(4px);
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -117,9 +234,37 @@ button:hover{
 }
 
 .modal-box{
+    width:500px;
+
     background:white;
-    padding:20px;
-    width:400px;
-    border-radius:10px;
-    border-top:5px solid var(--red);
+
+    padding:30px;
+
+    border-radius:18px;
+
+    border-top:6px solid var(--red);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.15);
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+.modal-box form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--red);
+    border-radius:999px;
 }
