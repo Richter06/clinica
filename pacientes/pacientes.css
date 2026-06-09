@@ -275,20 +275,14 @@ tbody tr:hover{
 }
 
 /* HAMBÚRGUER */
-
-/* HAMBÚRGUER */
 .menu-toggle{
-    display:none;
-    background:none;
-    border:none;
-    color:#1e293b;
-    font-size:34px;
-    line-height:1;
-    cursor:pointer;
-    z-index:9999;
-    transition:.2s;
-    padding:0;
-}
+        display:block;
+        position:fixed;
+        top:15px;
+        left:15px;
+        z-index:1100;
+    }
+
 
 /* RESPONSIVO */
 @media (max-width:768px){
@@ -303,11 +297,11 @@ tbody tr:hover{
     top:18px;
     left:18px;
 
-    background:none;
+    background:transparent !important;
     border:none;
+    box-shadow:none !important;
 
     color:#1e293b;
-
     font-size:34px;
     line-height:1;
 
@@ -315,16 +309,28 @@ tbody tr:hover{
 
     z-index:9999;
 
-    transition:.2s;
+    padding:0;
+    width:auto;
+    height:auto;
+
+     transition:left .3s ease;
 }
 
 .menu-toggle:hover{
+    background:transparent !important;
+    color:#1e293b;
     transform:scale(1.1);
 }
 
-.sidebar.open ~ .content .menu-toggle{
+
+
+.menu-toggle.active{
     left:200px;
 }
+
+
+
+
 
     .sidebar{
         position:fixed;

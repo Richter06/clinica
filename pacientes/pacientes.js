@@ -117,7 +117,11 @@ const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 
 menuToggle.addEventListener("click", () => {
+
     sidebar.classList.toggle("open");
+    menuToggle.classList.toggle("active");
+
     menuToggle.textContent =
         sidebar.classList.contains("open") ? "✕" : "☰";
+
 });
