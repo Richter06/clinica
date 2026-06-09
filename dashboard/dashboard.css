@@ -42,11 +42,12 @@ body {
     box-shadow: 4px 0 20px rgba(0,0,0,0.08);
 }
 
+
+
 .sidebar h2{
-    font-size: 28px;
-    margin-bottom: 40px;
-    font-weight: 700;
-    letter-spacing: .5px;
+    margin-bottom:40px;
+    font-size:28px;
+    font-weight:700;
 }
 
 .sidebar ul{
