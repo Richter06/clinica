@@ -10,9 +10,9 @@
 
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-   <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <h2>Clínica Vita+</h2>
 
             <nav>
@@ -27,60 +27,62 @@
             </nav>
         </aside>
 
-    <main class="content">
+        <main class="content">
 
-        <h1>Prontuários</h1>
+            <button id="menuToggle" class="menu-toggle">☰</button>
 
-        <div class="top">
+            <h1>Prontuários</h1>
 
-            <select id="pacienteSelect"></select>
+            <div class="top">
 
-            <button id="btnNovo">Novo registro</button>
+                <select id="pacienteSelect"></select>
 
-        </div>
+                <button id="btnNovo">Novo registro</button>
 
-        <div class="historico">
+            </div>
 
-            <h2>Histórico do paciente</h2>
+            <div class="historico">
 
-            <div id="lista"></div>
+                <h2>Histórico do paciente</h2>
 
-        </div>
+                <div id="lista"></div>
 
-    </main>
+            </div>
 
-</div>
-
-<!-- MODAL -->
-<div class="modal hidden" id="modal">
-
-    <div class="modal-box">
-
-        <h2>Novo Prontuário</h2>
-
-        <form id="form">
-
-            <input type="hidden" id="editIndex">
-
-            <label>Médico</label>
-            <select id="medico"></select>
-
-            <label>Diagnóstico</label>
-            <input type="text" id="diagnostico" required>
-
-            <label>Observações</label>
-            <textarea id="observacoes"></textarea>
-
-            <button type="submit">Salvar</button>
-            <button type="button" id="cancelar">Cancelar</button>
-
-        </form>
+        </main>
 
     </div>
 
-</div>
+    <!-- MODAL -->
+    <div class="modal hidden" id="modal">
 
-<script src="prontuarios.js"></script>
+        <div class="modal-box">
+
+            <h2>Novo Prontuário</h2>
+
+            <form id="form">
+
+                <input type="hidden" id="editIndex">
+
+                <label>Médico</label>
+                <select id="medico"></select>
+
+                <label>Diagnóstico</label>
+                <input type="text" id="diagnostico" required>
+
+                <label>Observações</label>
+                <textarea id="observacoes"></textarea>
+
+                <button type="submit">Salvar</button>
+                <button type="button" id="cancelar">Cancelar</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="prontuarios.js"></script>
 
 </body>
 
