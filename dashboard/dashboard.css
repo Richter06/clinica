@@ -232,6 +232,36 @@ tbody tr:hover{
 }
 
 
+
+.menu-toggle {
+    display: none;
+    background: none !important;
+    border: none;
+    color: #1f2937;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 9999;
+    transition: .25s;
+}
+
+.menu-toggle:hover {
+    background: transparent !important;
+    color: #1e293b;
+    transform: scale(1.1);
+}
+
+.menu-toggle.active {
+    left: 200px;
+}
+
 /* RESPONSIVO */
 
 @media (max-width: 1024px) {

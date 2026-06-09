@@ -71,7 +71,7 @@ function render(){
                 <p>${p.diagnostico}</p>
                 <small>${p.observacoes || ""}</small>
 
-                <button onclick="excluirProntuario(${index})">
+                <button id="excluir" onclick="excluirProntuario(${index})">
                     Excluir
                 </button>
             </div>
