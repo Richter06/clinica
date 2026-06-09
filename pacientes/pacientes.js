@@ -125,3 +125,17 @@ menuToggle.addEventListener("click", () => {
         sidebar.classList.contains("open") ? "✕" : "☰";
 
 });
+
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        themeIcon.src = "../icons/dark.png";
+    }else{
+        themeIcon.src = "../icons/light.png";
+    }
+});

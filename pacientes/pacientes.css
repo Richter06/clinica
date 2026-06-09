@@ -5,14 +5,53 @@
 }
 
 :root{
-    --red:#d52b1e;
-    --dark-red:#b2221a;
-    --light-red:#fff1f0;
-    --bg:#f7f8fa;
-    --white:#ffffff;
-    --text:#1f2937;
-    --gray:#64748b;
-    --border:#e5e7eb;
+    --red: #d52b1e;
+    --dark-red: #b2221a;
+    --light-red: #ffe5e2;
+    --bg: #f7f8fa;
+    --white: #ffffff;
+    --text: #1e293b;
+    --gray: #64748b;
+    --border: #e5e7eb;
+    --table-header-bg: #fafafa;
+    --surface: #ffffff;
+    --surface-2: #f8fafc;
+    --input-bg: #ffffff;
+}
+body.dark-mode{
+    --bg: #0f172a;
+    --white: #1e293b;
+    --text: #e5e7eb;
+    --gray: #94a3b8;
+    --border: #334155;
+    --light-red: #2b1a1a;
+    --table-header-bg: #1e293b;
+    --surface: #111827;
+    --surface-2: #172033;
+    --input-bg: #0f172a;
+}
+
+#themeToggle{
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    background:none;
+    border:none;
+
+    cursor:pointer;
+
+    padding:0;
+
+    z-index:9999;
+}
+
+#themeIcon{
+    width:24px;
+    height:24px;
+
+    display:block;
 }
 
 body{
@@ -158,7 +197,7 @@ button:hover{
 /* TABELA */
 
 .table-container{
-    background:white;
+    background:var(--surface);
 
     border-radius:18px;
 
@@ -176,9 +215,8 @@ table{
 }
 
 th{
-    background:#fafafa;
-
-    color:var(--dark-red);
+    background: var(--table-header-bg);
+    color: var(--text);
 
     font-size:14px;
     font-weight:600;
@@ -219,6 +257,13 @@ tbody tr:hover{
     align-items:center;
 }
 
+input,
+select,
+textarea{
+    background: var(--input-bg);
+    color: var(--text);
+}
+
 .hidden{
     display:none;
 }
@@ -226,7 +271,7 @@ tbody tr:hover{
 .modal-content{
     width:450px;
 
-    background:white;
+    background: var(--surface);
 
     padding:28px;
 
@@ -283,7 +328,7 @@ tbody tr:hover{
     display: none;
     background: none !important;
     border: none;
-    color: #1f2937;
+    color: var(--text);
     font-size: 34px;
     line-height: 1;
     cursor: pointer;
@@ -300,7 +345,7 @@ tbody tr:hover{
 
 .menu-toggle:hover {
     background: transparent !important;
-    color: #1e293b;
+    color: var(--text);
     transform: scale(1.1);
 }
 
@@ -329,7 +374,7 @@ tbody tr:hover{
     border:none;
     box-shadow:none !important;
 
-    color:#1e293b;
+   
     font-size:34px;
     line-height:1;
 
@@ -346,7 +391,7 @@ tbody tr:hover{
 
 .menu-toggle:hover{
     background:transparent !important;
-    color:#1e293b;
+   
     transform:scale(1.1);
 }
 
