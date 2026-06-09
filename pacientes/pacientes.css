@@ -291,6 +291,10 @@ tbody tr:hover{
         display:block;
     }
 
+    button{
+        margin-top:10px;
+    }
+
     .menu-toggle{
     display:block;
     position:fixed;
