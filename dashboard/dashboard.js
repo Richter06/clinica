@@ -41,33 +41,33 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("totalConsultas").textContent = consultas.length;
 
     //  TABELA
-   const tabela = document.getElementById("consultas");
-tabela.innerHTML = "";
+    const tabela = document.getElementById("consultas");
+    tabela.innerHTML = "";
 
-// ordena por data/hora
-const proximas = consultas
-    .slice()
-    .sort((a, b) =>
-        new Date(`${a.data}T${a.horario}`) -
-        new Date(`${b.data}T${b.horario}`)
-    )
-    .slice(0, 5);
+    // ordena por data/hora
+    const proximas = consultas
+        .slice()
+        .sort((a, b) =>
+            new Date(`${a.data}T${a.horario}`) -
+            new Date(`${b.data}T${b.horario}`)
+        )
+        .slice(0, 5);
 
-// renderiza
-proximas.forEach(c => {
+    // renderiza
+    proximas.forEach(c => {
 
-    const agora = new Date();
-    const dataConsulta = new Date(`${c.data}T${c.horario}`);
+        const agora = new Date();
+        const dataConsulta = new Date(`${c.data}T${c.horario}`);
 
-    let status = "";
+        let status = "";
 
-    if (dataConsulta < agora) {
-        status = "🔴 Atrasada";
-    } else {
-        status = "🟢 Agendada";
-    }
+        if (dataConsulta < agora) {
+            status = "🔴 Atrasada";
+        } else {
+            status = "🟢 Agendada";
+        }
 
-    tabela.innerHTML += `
+        tabela.innerHTML += `
         <tr>
             <td>${c.data}</td>
             <td>${c.horario}</td>
@@ -76,8 +76,10 @@ proximas.forEach(c => {
             <td>${status}</td>
         </tr>
     `;
+    });
 });
-});
+
+//Menu Hamburguer
 
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
@@ -85,9 +87,25 @@ const sidebar = document.getElementById("sidebar");
 menuToggle.addEventListener("click", () => {
     sidebar.classList.toggle("open");
 
-    if(sidebar.classList.contains("open")){
+    if (sidebar.classList.contains("open")) {
         menuToggle.innerHTML = "✕";
-    }else{
+    } else {
         menuToggle.innerHTML = "☰";
+    }
+});
+
+//DARK MODE 
+
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        themeIcon.src = "../icons/dark.png";
+    }else{
+        themeIcon.src = "../icons/light.png";
     }
 });

@@ -13,6 +13,41 @@
     --text: #1e293b;
     --gray: #64748b;
     --border: #e5e7eb;
+    --table-header-bg: #fafafa;
+
+}
+
+body.dark-mode{
+    --bg:#111827;
+    --white:#1f2937;
+    --text:#f3f4f6;
+    --gray:#9ca3af;
+    --border:#374151;
+    --light-red:#2d1a1a;
+     --table-header-bg: #243042;
+}
+
+#themeToggle{
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    background:none;
+    border:none;
+
+    cursor:pointer;
+
+    padding:0;
+
+    z-index:9999;
+}
+
+#themeIcon{
+    width:24px;
+    height:24px;
+
+    display:block;
 }
 
 body {
@@ -198,13 +233,12 @@ thead{
 }
 
 th{
+    background: var(--table-header-bg);
     color: var(--dark-red);
     font-size: 14px;
     font-weight: 600;
-
     padding: 16px;
     text-align: left;
-
     border-bottom: 2px solid var(--border);
 }
 
@@ -238,7 +272,7 @@ tbody tr:hover{
     display: none;
     background: none !important;
     border: none;
-    color: #1f2937;
+    color: var(--text);
     font-size: 34px;
     line-height: 1;
     cursor: pointer;
@@ -253,10 +287,9 @@ tbody tr:hover{
     transition: .25s;
 }
 
-.menu-toggle:hover {
-    background: transparent !important;
-    color: #1e293b;
-    transform: scale(1.1);
+.menu-toggle:hover{
+    color:var(--text);
+    transform:scale(1.1);
 }
 
 .menu-toggle.active {
@@ -406,7 +439,6 @@ tbody tr:hover{
     background:none;
     border:none;
 
-    color:#1e293b;
 
     font-size:34px;
     line-height:1;
