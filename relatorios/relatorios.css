@@ -245,3 +245,169 @@ canvas{
     background:var(--red);
     border-radius:999px;
 }
+
+/* HAMBÚRGUER */
+.menu-toggle{
+    display:none;
+    background:none !important;
+    border:none;
+    color:#1f2937;
+    font-size:34px;
+    line-height:1;
+    cursor:pointer;
+    padding:0;
+    width:auto;
+    height:auto;
+    box-shadow:none;
+    position:fixed;
+    top:18px;
+    left:18px;
+    z-index:9999;
+    transition:.25s;
+}
+
+.menu-toggle:hover{
+    background:transparent !important;
+    color:#1e293b;
+    transform:scale(1.1);
+}
+
+.menu-toggle.active{
+    left:200px;
+}
+
+/* RESPONSIVO */
+@media (max-width:1024px){
+    .content{
+        padding:28px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    }
+
+    .card p{
+        font-size:32px;
+    }
+
+    .chart-box,
+    .table-box{
+        padding:22px;
+    }
+
+    .chart-box h2,
+    .table-box h2{
+        font-size:20px;
+    }
+}
+
+@media (max-width:768px){
+    .layout{
+        display:block;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .sidebar{
+        position:fixed;
+        top:0;
+        left:-260px;
+        width:260px;
+        height:100vh;
+        z-index:1000;
+        transition:.3s;
+        overflow-y:auto;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .content{
+        width:100%;
+        padding:70px 16px 16px;
+    }
+
+    h1{
+        font-size:28px;
+        margin-bottom:24px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:16px;
+        margin-bottom:24px;
+    }
+
+    .card{
+        padding:20px;
+        border-radius:16px;
+    }
+
+    .table-box,
+    .chart-box{
+        padding:20px;
+        border-radius:16px;
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:640px;
+    }
+
+    canvas{
+        max-height:320px;
+    }
+}
+
+@media (max-width:480px){
+    .content{
+        padding:64px 14px 14px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+    .sidebar{
+        width:260px;
+        left:-260px;
+        padding:24px 16px;
+    }
+
+    .sidebar h2{
+        font-size:22px;
+        margin-bottom:28px;
+    }
+
+    .sidebar a{
+        padding:12px 14px;
+        font-size:14px;
+    }
+
+    .card p{
+        font-size:30px;
+    }
+
+    .chart-box,
+    .table-box{
+        padding:16px;
+        border-radius:14px;
+    }
+
+    table{
+        min-width:560px;
+    }
+
+    th,
+    td{
+        padding:12px;
+        font-size:14px;
+    }
+
+    canvas{
+        max-height:280px;
+    }
+}
