@@ -13,6 +13,59 @@
     --text:#1f2937;
     --gray:#64748b;
     --border:#e5e7eb;
+    --table-header-bg:#fafafa;
+    --surface:#ffffff;
+    --surface-2:#f8fafc;
+    --input-bg:#ffffff;
+    --hover-row:#fff1f0;
+    --icon-color:#1f2937;
+}
+
+body.dark-mode{
+    --bg:#0f172a;
+    --white:#1e293b;
+    --text:#e5e7eb;
+    --gray:#94a3b8;
+    --border:#334155;
+    --light-red:#2b1a1a;
+    --table-header-bg:#1e293b;
+    --surface:#111827;
+    --surface-2:#172033;
+    --input-bg:#0f172a;
+    --hover-row:#172033;
+    --icon-color:#e5e7eb;
+}
+
+#themeToggle{
+    position:fixed;
+    top:20px;
+    right:20px;
+
+    width:auto;
+    height:auto;
+
+    padding:0 !important;
+
+    background:none !important;
+    border:none !important;
+    border-radius:0 !important;
+
+    box-shadow:none !important;
+
+    cursor:pointer;
+
+    z-index:9999;
+}
+
+#themeToggle:hover{
+    background:none !important;
+    transform:scale(1.1);
+}
+
+#themeIcon{
+    width:24px;
+    height:24px;
+    display:block;
 }
 
 body{
@@ -30,16 +83,13 @@ body{
 
 .sidebar{
     width:260px;
-
     background:linear-gradient(
         180deg,
         var(--red),
         var(--dark-red)
     );
-
     color:white;
     padding:30px 20px;
-
     box-shadow:4px 0 20px rgba(0,0,0,.08);
 }
 
@@ -62,14 +112,10 @@ body{
 
 .sidebar a{
     display:block;
-
     padding:14px 16px;
-
     color:white;
     text-decoration:none;
-
     border-radius:12px;
-
     transition:.25s;
 }
 
@@ -93,7 +139,6 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     margin-bottom:30px;
 }
 
@@ -109,40 +154,47 @@ body{
 
 /* INPUT */
 
-input{
+input,
+select,
+textarea{
+    width:100%;
     padding:12px 14px;
-
     border:1px solid var(--border);
     border-radius:10px;
-
     font-size:15px;
-
+    background:var(--input-bg);
+    color:var(--text);
     transition:.2s;
 }
 
-input:focus{
+input::placeholder,
+textarea::placeholder{
+    color:var(--gray);
+}
+
+input:focus,
+select:focus,
+textarea:focus{
     outline:none;
-
     border-color:var(--red);
-
     box-shadow:0 0 0 3px rgba(213,43,30,.15);
+}
+
+textarea{
+    resize:none;
+    min-height:120px;
 }
 
 /* BOTÕES */
 
 button{
     padding:12px 18px;
-
     border:none;
     border-radius:10px;
-
     cursor:pointer;
-
     background:var(--red);
     color:white;
-
     font-weight:600;
-
     transition:.25s;
 }
 
@@ -154,16 +206,11 @@ button:hover{
 /* TABELA */
 
 .table-container{
-    background:white;
-
+    background:var(--surface);
     border-radius:18px;
-
     overflow:hidden;
-
     border:1px solid var(--border);
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,.05);
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
 }
 
 table{
@@ -173,22 +220,16 @@ table{
 
 th{
     padding:16px;
-
-    background:#fafafa;
-
+    background:var(--table-header-bg);
     color:var(--dark-red);
-
     font-size:14px;
     font-weight:600;
-
     text-align:left;
-
     border-bottom:2px solid var(--border);
 }
 
 td{
     padding:16px;
-
     border-bottom:1px solid var(--border);
 }
 
@@ -197,7 +238,7 @@ tbody tr{
 }
 
 tbody tr:hover{
-    background:var(--light-red);
+    background:var(--hover-row);
 }
 
 /* MODAL */
@@ -205,11 +246,8 @@ tbody tr:hover{
 .modal{
     position:fixed;
     inset:0;
-
     background:rgba(0,0,0,.45);
-
     backdrop-filter:blur(3px);
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -221,21 +259,17 @@ tbody tr:hover{
 
 .modal-content{
     width:460px;
-
-    background:white;
-
+    background:var(--surface);
+    color:var(--text);
     padding:28px;
-
     border-radius:18px;
-
     border-top:6px solid var(--red);
-
-    box-shadow:
-        0 20px 40px rgba(0,0,0,.15);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
 .modal-content h2{
     margin-bottom:20px;
+    color:var(--text);
 }
 
 .modal-content form{
@@ -248,7 +282,6 @@ tbody tr:hover{
     display:flex;
     justify-content:flex-end;
     gap:10px;
-
     margin-top:10px;
 }
 
@@ -272,11 +305,12 @@ tbody tr:hover{
 }
 
 /* HAMBÚRGUER */
+
 .menu-toggle{
     display:none;
     background:none !important;
     border:none;
-    color:#1f2937;
+    color:var(--icon-color);
     font-size:34px;
     line-height:1;
     cursor:pointer;
@@ -293,17 +327,16 @@ tbody tr:hover{
 
 .menu-toggle:hover{
     background:transparent !important;
-    color:#1e293b;
+    color:var(--icon-color);
     transform:scale(1.1);
 }
-
-
 
 .menu-toggle.active{
     left:200px;
 }
 
 /* RESPONSIVO */
+
 @media (max-width:1024px){
     .container{
         padding:28px;

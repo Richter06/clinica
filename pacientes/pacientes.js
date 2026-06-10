@@ -113,6 +113,8 @@ search.addEventListener("input",e=>{
 
 renderizar();
 
+//MENU HAMBURGUER
+
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 
@@ -125,6 +127,8 @@ menuToggle.addEventListener("click", () => {
         sidebar.classList.contains("open") ? "✕" : "☰";
 
 });
+
+// THEME TOGGLE
 
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
