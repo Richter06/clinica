@@ -1,96 +1,118 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    const pacientes =
-        JSON.parse(localStorage.getItem("pacientes")) || [];
-
-    const medicos =
-        JSON.parse(localStorage.getItem("medicos")) || [];
-
-    const consultas =
-        JSON.parse(localStorage.getItem("consultas")) || [];
+    const pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
+    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    const consultas = JSON.parse(localStorage.getItem("consultas")) || [];
 
     const agora = new Date();
+    const hojeStr = agora.toISOString().split("T")[0];
 
-    const atrasadas = [];
-    const hojeLista = [];
-    const futuras = [];
+    let atrasadas = 0;
+    let hoje = 0;
+    let futuras = 0;
+    let concluidas = 0;
+    let canceladas = 0;
+    let confirmadas = 0;
+    let emAtendimento = 0;
+    let agendadas = 0;
 
-    // separa tudo
     consultas.forEach(c => {
         const dataConsulta = new Date(`${c.data}T${c.horario}`);
         const status = c.status || "Agendada";
+
+        if (status === "Concluída") {
+            concluidas++;
+        } else if (status === "Cancelada") {
+            canceladas++;
+        } else if (status === "Confirmada") {
+            confirmadas++;
+        } else if (status === "Em Atendimento") {
+            emAtendimento++;
+        } else {
+            agendadas++;
+        }
 
         if (
             dataConsulta < agora &&
             status !== "Concluída" &&
             status !== "Cancelada"
         ) {
-            atrasadas.push(c);
-        } else if (c.data === agora.toISOString().split("T")[0]) {
-            hojeLista.push(c);
-        } else {
-            futuras.push(c);
+            atrasadas++;
+        }
+
+        if (c.data === hojeStr) {
+            hoje++;
+        }
+
+        if (c.data > hojeStr) {
+            futuras++;
         }
     });
 
-    // atualiza os cards
-    document.getElementById("atrasadas").textContent = atrasadas.length;
-    document.getElementById("hoje").textContent = hojeLista.length;
-    document.getElementById("futuras").textContent = futuras.length;
+    const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+    };
 
-    document.getElementById("totalPacientes").textContent = pacientes.length;
-    document.getElementById("totalMedicos").textContent = medicos.length;
-    document.getElementById("totalConsultas").textContent = consultas.length;
+    setText("atrasadas", atrasadas);
+    setText("hoje", hoje);
+    setText("futuras", futuras);
+    setText("concluidas", concluidas);
+    setText("canceladas", canceladas);
+    setText("confirmadas", confirmadas);
+    setText("emAtendimento", emAtendimento);
+    setText("agendadas", agendadas);
 
-    // TABELA
+    setText("totalPacientes", pacientes.length);
+    setText("totalMedicos", medicos.length);
+    setText("totalConsultas", consultas.length);
+
     const tabela = document.getElementById("consultas");
-    tabela.innerHTML = "";
+    if (tabela) {
+        tabela.innerHTML = "";
 
-    // ordena por data/hora
-    const proximas = consultas
-        .slice()
-        .sort((a, b) =>
-            new Date(`${a.data}T${a.horario}`) -
-            new Date(`${b.data}T${b.horario}`)
-        )
-        .slice(0, 5);
+        const proximas = consultas
+            .slice()
+            .sort((a, b) =>
+                new Date(`${a.data}T${a.horario}`) -
+                new Date(`${b.data}T${b.horario}`)
+            )
+            .slice(0, 5);
 
-    // renderiza
-    proximas.forEach(c => {
-        const agora = new Date();
-        const dataConsulta = new Date(`${c.data}T${c.horario}`);
-        const statusBase = c.status || "Agendada";
+        proximas.forEach(c => {
+            const dataConsulta = new Date(`${c.data}T${c.horario}`);
+            const statusBase = c.status || "Agendada";
 
-        let status = "";
+            let statusExibido = "";
 
-        if (
-            dataConsulta < agora &&
-            statusBase !== "Concluída" &&
-            statusBase !== "Cancelada"
-        ) {
-            status = "🔴 Atrasada";
-        } else if (statusBase === "Concluída") {
-            status = "✅ Concluída";
-        } else if (statusBase === "Cancelada") {
-            status = "⚫ Cancelada";
-        } else if (statusBase === "Confirmada") {
-            status = "🟡 Confirmada";
-        } else if (statusBase === "Em Atendimento") {
-            status = "🔵 Em Atendimento";
-        } else {
-            status = "🟢 Agendada";
-        }
+            if (
+                dataConsulta < agora &&
+                statusBase !== "Concluída" &&
+                statusBase !== "Cancelada"
+            ) {
+                statusExibido = "🔴 Atrasada";
+            } else if (statusBase === "Concluída") {
+                statusExibido = "✅ Concluída";
+            } else if (statusBase === "Cancelada") {
+                statusExibido = "⚫ Cancelada";
+            } else if (statusBase === "Confirmada") {
+                statusExibido = "🟡 Confirmada";
+            } else if (statusBase === "Em Atendimento") {
+                statusExibido = "🔵 Em Atendimento";
+            } else {
+                statusExibido = "🟢 Agendada";
+            }
 
-        tabela.innerHTML += `
-        <tr>
-            <td>${c.data}</td>
-            <td>${c.horario}</td>
-            <td>${c.paciente}</td>
-            <td>${c.medico}</td>
-            <td>${status}</td>
-        </tr>
-        `;
-    });
+            tabela.innerHTML += `
+                <tr>
+                    <td>${c.data}</td>
+                    <td>${c.horario}</td>
+                    <td>${c.paciente}</td>
+                    <td>${c.medico}</td>
+                    <td>${statusExibido}</td>
+                </tr>
+            `;
+        });
+    }
 });
 
 // Menu Hamburguer
@@ -109,7 +131,7 @@ if (menuToggle && sidebar) {
     });
 }
 
-// DARK MODE
+// Dark mode
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
 
