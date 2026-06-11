@@ -29,28 +29,33 @@
 
         <main class="content">
 
-            <button id="themeToggle">
-                        <img id="themeIcon" src="../icons/light.png" alt="Toggle Theme">
-                    </button>
+            <div class="top-bar">
+                <button id="themeToggle" type="button">
+                    <img id="themeIcon" src="../icons/light.png" alt="Toggle Theme">
+                </button>
 
-            <button id="menuToggle" class="menu-toggle">☰</button>
+                <button id="menuToggle" class="menu-toggle" type="button">☰</button>
+            </div>
 
             <h1>Prontuários</h1>
 
             <div class="top">
 
-                <select id="pacienteSelect"></select>
+                <select id="filtroPaciente">
+                    <option value="">Todos os pacientes</option>
+                </select>
 
-                <button id="btnNovo">Novo registro</button>
+                <input
+                    type="text"
+                    id="pesquisa"
+                    placeholder="Buscar por paciente, médico ou diagnóstico...">
 
+                <button id="btnNovo" type="button">Novo registro</button>
             </div>
 
             <div class="historico">
-
                 <h2>Histórico do paciente</h2>
-
                 <div id="lista"></div>
-
             </div>
 
         </main>
@@ -59,31 +64,72 @@
 
     <!-- MODAL -->
     <div class="modal hidden" id="modal">
-
         <div class="modal-box">
-
             <h2>Novo Prontuário</h2>
 
             <form id="form">
 
                 <input type="hidden" id="editIndex">
 
-                <label>Médico</label>
-                <select id="medico"></select>
+                <label for="pacienteSelect">Paciente</label>
+                <select id="pacienteSelect" required>
+                    <option value="">Selecione um paciente</option>
+                </select>
 
-                <label>Diagnóstico</label>
-                <input type="text" id="diagnostico" required>
+                <label for="medico">Médico</label>
+                <select id="medico" required>
+                    <option value="">Selecione um médico</option>
+                </select>
 
-                <label>Observações</label>
-                <textarea id="observacoes"></textarea>
+                <label for="queixa">Queixa principal</label>
+                <input type="text" id="queixa" maxlength="200" placeholder="Ex.: dor de cabeça, febre...">
 
-                <button type="submit">Salvar</button>
-                <button type="button" id="cancelar">Cancelar</button>
+                <label for="diagnostico">Diagnóstico</label>
+                <input type="text" id="diagnostico" required maxlength="200" placeholder="Informe o diagnóstico">
+
+                <label for="alergias">Alergias</label>
+                <input type="text" id="alergias" maxlength="200" placeholder="Ex.: dipirona, poeira...">
+
+                <label for="medicacoes">Medicações em uso</label>
+                <input type="text" id="medicacoes" maxlength="200" placeholder="Medicamentos em uso">
+
+                <label for="examesSolicitados">Exames solicitados</label>
+                <input type="text" id="examesSolicitados" maxlength="200" placeholder="Exames solicitados">
+
+                <label for="procedimentos">Procedimentos realizados</label>
+                <input type="text" id="procedimentos" maxlength="200" placeholder="Procedimentos realizados">
+
+                <label for="evolucao">Evolução</label>
+                <textarea id="evolucao" maxlength="500" placeholder="Evolução do paciente"></textarea>
+
+                <label for="pressao">Pressão arterial</label>
+                <input type="text" id="pressao" maxlength="20" placeholder="Ex.: 120/80">
+
+                <label for="temperatura">Temperatura</label>
+                <input type="text" id="temperatura" maxlength="10" placeholder="Ex.: 36.7°C">
+
+                <label for="frequenciaCardiaca">Frequência cardíaca</label>
+                <input type="text" id="frequenciaCardiaca" maxlength="20" placeholder="Ex.: 80 bpm">
+
+                <label for="peso">Peso (kg)</label>
+                <input type="number" id="peso" step="0.01" min="0" placeholder="Ex.: 70.5">
+
+                <label for="altura">Altura (m)</label>
+                <input type="number" id="altura" step="0.01" min="0" placeholder="Ex.: 1.75">
+
+                <label for="imc">IMC</label>
+                <input type="text" id="imc" readonly placeholder="Calculado automaticamente">
+
+                <label for="observacoes">Observações</label>
+                <textarea id="observacoes" maxlength="1000" placeholder="Observações do atendimento"></textarea>
+
+                <div class="buttons">
+                    <button type="submit">Salvar</button>
+                    <button type="button" id="cancelar">Cancelar</button>
+                </div>
 
             </form>
-
         </div>
-
     </div>
 
     <script src="prontuarios.js"></script>

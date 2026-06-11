@@ -286,7 +286,11 @@ button:hover{
 }
 
 .modal-box{
-    width:500px;
+    width:700px;
+    max-width:95%;
+    max-height:90vh;
+    overflow-y:auto;
+
     background:var(--surface);
     color:var(--text);
     padding:30px;
@@ -304,6 +308,15 @@ button:hover{
     display:flex;
     flex-direction:column;
     gap:14px;
+}
+
+.modal-box::-webkit-scrollbar{
+    width:8px;
+}
+
+.modal-box::-webkit-scrollbar-thumb{
+    background:var(--red);
+    border-radius:10px;
 }
 
 /* SCROLL */
