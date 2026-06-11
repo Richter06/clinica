@@ -1,120 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Médicos</title>
     <link rel="stylesheet" href="medicos.css">
 </head>
+
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-    <aside class="sidebar" id="sidebar">
-        <h2>Clínica Vita+</h2>
+        <aside class="sidebar" id="sidebar">
+            <h2>Clínica Vita+</h2>
 
-        <nav>
-            <ul>
-                <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
-                <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
-                <li class="active"><a href="../medicos/medicos.html">Médicos</a></li>
-                <li><a href="../consultas/consultas.html">Consultas</a></li>
-                <li><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
-                <li><a href="../relatorios/relatorios.html">Relatórios</a></li>
-            </ul>
-        </nav>
-    </aside>
+            <nav>
+                <ul>
+                    <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+                    <li class="active"><a href="../medicos/medicos.html">Médicos</a></li>
+                    <li><a href="../consultas/consultas.html">Consultas</a></li>
+                    <li><a href="../prontuarios/prontuarios.html">Prontuários</a></li>
+                    <li><a href="../relatorios/relatorios.html">Relatórios</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-    <main class="container">
+        <main class="container">
 
-        <button id="menuToggle" class="menu-toggle">☰</button>
+            <button id="menuToggle" class="menu-toggle">☰</button>
 
-        <div class="header">
-            <h1>Médicos</h1>
+            <div class="header">
+                <h1>Médicos</h1>
 
                 <button id="themeToggle">
-                        <img id="themeIcon" src="../icons/light.png" alt="Toggle Theme">
+                    <img id="themeIcon" src="../icons/light.png" alt="Toggle Theme">
+                </button>
+
+                <div class="actions">
+                    <input type="text" id="pesquisa" placeholder="Pesquisar médico...">
+
+                    <button id="btnNovo">
+                        Novo Médico
                     </button>
-
-            <div class="actions">
-                <input
-                    type="text"
-                    id="pesquisa"
-                    placeholder="Pesquisar médico..."
-                >
-
-                <button id="btnNovo">
-                    Novo Médico
-                </button>
-            </div>
-        </div>
-
-        <div class="table-container">
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>CRM</th>
-                        <th>Especialidade</th>
-                        <th>Telefone</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-
-                <tbody id="listaMedicos"></tbody>
-
-            </table>
-
-        </div>
-
-    </main>
-
-</div>
-
-<div class="modal hidden" id="modal">
-
-    <div class="modal-content">
-
-        <h2>Médico</h2>
-
-        <form id="medicoForm">
-
-            <input type="hidden" id="editIndex">
-
-            <label>Nome</label>
-            <input type="text" id="nome" required>
-
-            <label>CRM</label>
-            <input type="text" id="crm" required>
-
-            <label>Especialidade</label>
-            <input type="text" id="especialidade" required>
-
-            <label>Telefone</label>
-            <input type="text" id="telefone" required>
-
-            <label>E-mail</label>
-            <input type="email" id="email" required>
-
-            <div class="buttons">
-                <button type="submit">Salvar</button>
-
-                <button
-                    type="button"
-                    class="cancel"
-                    id="btnCancelar">
-                    Cancelar
-                </button>
+                </div>
             </div>
 
-        </form>
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CRM</th>
+                            <th>Especialidade</th>
+                            <th>Telefone</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaMedicos"></tbody>
+
+                </table>
+
+            </div>
+
+        </main>
 
     </div>
 
-</div>
+    <div class="modal hidden" id="modal">
 
-<script src="medicos.js"></script>
+        <div class="modal-content">
+
+            <h2>Médico</h2>
+
+            <form id="medicoForm">
+
+                <input type="hidden" id="editIndex">
+
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" required maxlength="100" pattern="[A-Za-zÀ-ÿ\s]+"
+                    title="Digite apenas letras e espaços">
+
+                <label for="crm">CRM</label>
+                <input type="text" id="crm" required maxlength="15" pattern="[A-Za-z]{2}\s?\d{4,10}"
+                    placeholder="CE 12345" title="Digite o CRM no formato UF + número">
+
+                <label for="especialidade">Especialidade</label>
+                <input type="text" id="especialidade" required maxlength="100" pattern="[A-Za-zÀ-ÿ\s]+"
+                    title="Digite apenas letras e espaços">
+
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" required maxlength="15" inputmode="numeric"
+                    pattern="\(\d{2}\)\s\d{4,5}-\d{4}" placeholder="(85) 99999-9999" title="Digite um telefone válido">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required maxlength="100" placeholder="exemplo@email.com">
+
+                <div class="buttons">
+                    <button type="submit">Salvar</button>
+
+                    <button type="button" class="cancel" id="btnCancelar">
+                        Cancelar
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="medicos.js"></script>
 
 </body>
+
 </html>
