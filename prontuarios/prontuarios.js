@@ -157,10 +157,10 @@ function render() {
                 ${p.observacoes ? `<small>${p.observacoes}</small>` : ""}
 
                 <div class="acoes">
-                    <button onclick="editarProntuario(${p.__index})">Editar</button>
-                    <button onclick="excluirProntuario(${p.__index})">Excluir</button>
-                </div>
-            </div>
+    <button onclick="editarProntuario(${p.__index})">Editar</button>
+    <button onclick="baixarPDF(${p.__index})">PDF</button>
+    <button onclick="excluirProntuario(${p.__index})">Excluir</button>
+</div>
         `;
     });
 }
@@ -265,6 +265,8 @@ carregarPacientes();
 carregarMedicos();
 render();
 
+// Menu Hamburguer
+
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 
@@ -275,6 +277,9 @@ if (menuToggle && sidebar) {
         menuToggle.textContent = sidebar.classList.contains("open") ? "✕" : "☰";
     });
 }
+
+// Dark mode
+
 
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
@@ -289,4 +294,59 @@ if (themeToggle && themeIcon) {
             themeIcon.src = "../icons/light.png";
         }
     });
+}
+
+// Gerar PDF do prontuário
+
+
+function baixarPDF(index){
+
+    const prontuario = prontuarios[index];
+
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Prontuário Médico", 20, 20);
+
+    doc.setFontSize(12);
+
+    let y = 40;
+
+    doc.text(`Paciente: ${prontuario.paciente || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Médico: ${prontuario.medico || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Data: ${prontuario.data || ""}`, 20, y);
+    y += 15;
+
+    doc.text(`Queixa: ${prontuario.queixa || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Diagnóstico: ${prontuario.diagnostico || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Alergias: ${prontuario.alergias || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Medicações: ${prontuario.medicacoes || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Exames: ${prontuario.examesSolicitados || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Procedimentos: ${prontuario.procedimentos || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Evolução: ${prontuario.evolucao || ""}`, 20, y);
+    y += 10;
+
+    doc.text(`Observações: ${prontuario.observacoes || ""}`, 20, y);
+
+    doc.save(
+        `Prontuario_${prontuario.paciente}.pdf`
+    );
 }
