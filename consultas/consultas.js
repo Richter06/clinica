@@ -15,41 +15,33 @@ const editIndex = document.getElementById("editIndex");
 const selectPaciente = document.getElementById("paciente");
 const selectMedico = document.getElementById("medico");
 
-let consultas =
-JSON.parse(localStorage.getItem("consultas")) || [];
+let consultas = JSON.parse(localStorage.getItem("consultas")) || [];
 
-const pacientes =
-JSON.parse(localStorage.getItem("pacientes")) || [];
+const pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
+const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
 
-const medicos =
-JSON.parse(localStorage.getItem("medicos")) || [];
-
-function carregarSelects(){
-
+function carregarSelects() {
     selectPaciente.innerHTML = "";
     selectMedico.innerHTML = "";
 
-    pacientes.forEach(paciente => {
-
+    pacientes.forEach(pacienteItem => {
         selectPaciente.innerHTML += `
-            <option value="${paciente.nome}">
-                ${paciente.nome}
+            <option value="${pacienteItem.nome}">
+                ${pacienteItem.nome}
             </option>
         `;
     });
 
-    medicos.forEach(medico => {
-
+    medicos.forEach(medicoItem => {
         selectMedico.innerHTML += `
-            <option value="${medico.nome}">
-                ${medico.nome}
+            <option value="${medicoItem.nome}">
+                ${medicoItem.nome}
             </option>
         `;
     });
 }
 
 btnNovo.addEventListener("click", () => {
-
     form.reset();
     editIndex.value = "";
 
@@ -62,59 +54,54 @@ btnCancelar.addEventListener("click", () => {
     modal.classList.add("hidden");
 });
 
-function salvarStorage(){
-
-    localStorage.setItem(
-        "consultas",
-        JSON.stringify(consultas)
-    );
+function salvarStorage() {
+    localStorage.setItem("consultas", JSON.stringify(consultas));
 }
 
-function renderizar(filtro=""){
-
+function renderizar(filtro = "") {
     lista.innerHTML = "";
 
     consultas
-    .filter(c =>
-        c.paciente.toLowerCase().includes(filtro.toLowerCase()) ||
-        c.medico.toLowerCase().includes(filtro.toLowerCase())
-    )
-    .forEach((consulta,index)=>{
+        .filter(c =>
+            c.paciente.toLowerCase().includes(filtro.toLowerCase()) ||
+            c.medico.toLowerCase().includes(filtro.toLowerCase())
+        )
+        .forEach((consulta, index) => {
+            const statusConsulta = consulta.status || "Agendada";
 
-        lista.innerHTML += `
-        <tr>
+            lista.innerHTML += `
+                <tr>
+                    <td>${consulta.paciente}</td>
+                    <td>${consulta.medico}</td>
+                    <td>${consulta.data}</td>
+                    <td>${consulta.horario}</td>
+                    <td>${statusConsulta}</td>
+                    <td>
+                        <button onclick="editar(${index})">
+                            Editar
+                        </button>
 
-            <td>${consulta.paciente}</td>
+                        ${
+                            statusConsulta !== "Concluída"
+                                ? `<button onclick="concluir(${index})">
+                                        Concluir
+                                   </button>`
+                                : ""
+                        }
 
-            <td>${consulta.medico}</td>
-
-            <td>${consulta.data}</td>
-
-            <td>${consulta.horario}</td>
-
-            <td>${consulta.status}</td>
-
-            <td>
-                <button onclick="editar(${index})">
-                    Editar
-                </button>
-
-                <button onclick="excluir(${index})">
-                    Excluir
-                </button>
-            </td>
-
-        </tr>
-        `;
-    });
+                        <button onclick="excluir(${index})">
+                            Excluir
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
 }
 
-form.addEventListener("submit",(e)=>{
-
+form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const consulta = {
-
         paciente: paciente.value,
         medico: medico.value,
         data: data.value,
@@ -125,12 +112,9 @@ form.addEventListener("submit",(e)=>{
 
     const index = editIndex.value;
 
-    if(index === ""){
-
+    if (index === "") {
         consultas.push(consulta);
-
-    }else{
-
+    } else {
         consultas[index] = consulta;
     }
 
@@ -140,8 +124,7 @@ form.addEventListener("submit",(e)=>{
     modal.classList.add("hidden");
 });
 
-function editar(index){
-
+function editar(index) {
     carregarSelects();
 
     const consulta = consultas[index];
@@ -158,19 +141,25 @@ function editar(index){
     modal.classList.remove("hidden");
 }
 
-function excluir(index){
-
-    if(confirm("Deseja excluir esta consulta?")){
-
-        consultas.splice(index,1);
+function concluir(index) {
+    if (confirm("Marcar esta consulta como concluída?")) {
+        consultas[index].status = "Concluída";
 
         salvarStorage();
         renderizar();
     }
 }
 
-pesquisa.addEventListener("input",(e)=>{
+function excluir(index) {
+    if (confirm("Deseja excluir esta consulta?")) {
+        consultas.splice(index, 1);
 
+        salvarStorage();
+        renderizar();
+    }
+}
+
+pesquisa.addEventListener("input", (e) => {
     renderizar(e.target.value);
 });
 
@@ -182,27 +171,24 @@ const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 
 menuToggle.addEventListener("click", () => {
-
     sidebar.classList.toggle("open");
     menuToggle.classList.toggle("active");
 
     menuToggle.textContent =
         sidebar.classList.contains("open") ? "✕" : "☰";
-
 });
 
-//THEME TOGGLE
 
+// THEME TOGGLE
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
 
 themeToggle.addEventListener("click", () => {
-
     document.body.classList.toggle("dark-mode");
 
-    if(document.body.classList.contains("dark-mode")){
+    if (document.body.classList.contains("dark-mode")) {
         themeIcon.src = "../icons/dark.png";
-    }else{
+    } else {
         themeIcon.src = "../icons/light.png";
     }
 });
